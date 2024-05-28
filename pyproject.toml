@@ -1,0 +1,34 @@
+[project]
+name = "FileReFollow"
+version = "0.2.0"
+dependencies = [
+  "requests",
+  "lxml",
+]
+# ￼requires-python = ">= 3.8"
+authors = [
+  {name = "Jake Gustafson"},
+]
+description = "Follow redirects that are in the form of HTML files."
+readme = "readme.md"
+license = {file = "license.txt"}
+keywords = ["download", "DownloadThemAll", "redirect"]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: End Users/Desktop",
+  "Topic :: Internet :: WWW/HTTP",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Programming Language :: Python :: 3",
+  "Environment :: Console",
+]
+
+[scripts]
+filerefollow = "filerefollow.morewikimedia:main_cli"
+
+[project.urls]
+Homepage = "https://github.com/Poikilos/filerefollow"
+Documentation = "https://github.com/Poikilos/filerefollow/blob/main/readme.md"
+Repository = "https://github.com/Poikilos/filerefollow.git"
+Issues = "https://github.com/Poikilos/filerefollow/issues"
+# Changelog = "https://github.com/Poikilos/filerefollow/blob/main/changelog.md"
