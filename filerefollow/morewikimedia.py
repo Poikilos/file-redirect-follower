@@ -39,6 +39,8 @@ pseudo_protocol = "Fileː"
 UA = ("User-Agent: FileReFollow/0.2"
       " (https://github.com/Poikilos/filerefollow) filerefollow/0.2")
 
+headers = {'User-Agent': UA}
+
 
 def undo():
     for sub in os.listdir("."):
@@ -56,11 +58,19 @@ def text_tail(node):
     yield node.tail
 
 
-def download(link, file_name):
+def download(url, file_name):
+    """Download the given URL to a file.
+    Note that WikiMedia Foundation requires a proper
+      user agent string.
+    - Requires the 'User-Agent' key of the `headers` global dict to be
+      set to a valid user agent string (formatted like: "<client
+      name>/<version> (<contact information>) <library/framework
+      name>/<version> [<library name>/<version> ...]").
+    """
     # See <https://stackoverflow.com/a/15645088/4541104>
     with open(file_name, "wb") as f:
         print("Downloading %s" % file_name)
-        response = requests.get(link, stream=True)
+        response = requests.get(url, stream=True, headers=headers)
         total_length = response.headers.get('content-length')
         if total_length is None:  # no content length header
             f.write(response.content)
